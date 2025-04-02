@@ -1,6 +1,10 @@
+'use client';
 import { Menu } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export const Header = () => {
+  const router = useRouter()
   return (
     <header className="flex w-full justify-between items-center h-[78px] px-[124px] max-md:px-10 max-sm:px-5">
       <div className="flex justify-center items-center gap-12">
@@ -53,6 +57,10 @@ export const Header = () => {
           </div>
         </div>
         <nav className="flex justify-center items-center gap-4 max-md:hidden">
+          <Link href={'/myapplications'} className="text-[#515B6F] text-base  leading-[25.6px] transition-colors duration-300 hover:text-[#4640DE] font-bold ">
+              Application Received
+          </Link>
+
           <a
             href="#"
             className="text-[#515B6F] text-base  leading-[25.6px] transition-colors duration-300 hover:text-[#4640DE] font-bold"
@@ -66,6 +74,7 @@ export const Header = () => {
           >
             Browse Companies
           </a>
+
 
         </nav>
       </div>

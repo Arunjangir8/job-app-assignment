@@ -56,9 +56,11 @@ export default function JobApplicationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
+
       setTimeout(() => {
         router.push("/myapplications");
       }, 2000);
