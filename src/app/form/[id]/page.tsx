@@ -93,7 +93,7 @@ export default function JobApplicationForm() {
       </header>
       
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="bg-white shadow-xl rounded-2xl overflow-hidden mb-8 transform transition-all duration-300 hover:shadow-2xl">
+        <div className="bg-white shadow-xl  overflow-hidden mb-8 transform transition-all duration-300 hover:shadow-2xl">
           <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 transform translate-x-1/3 -translate-y-1/3">
               <div className="w-full h-full bg-white/10 rounded-full blur-3xl"></div>
@@ -423,7 +423,7 @@ export default function JobApplicationForm() {
                 <button
                   type="button"
                   onClick={prevStep}
-                  className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                  className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ${
                     currentStep === 1
                       ? "text-gray-400 bg-gray-100 cursor-not-allowed"
                       : "text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900"
@@ -437,7 +437,7 @@ export default function JobApplicationForm() {
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="px-6 py-3 rounded-xl font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transform transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                    className="px-6 py-3 rounded-md font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transform transition-all duration-200 hover:scale-105 hover:shadow-lg"
                   >
                     Continue
                   </button>
@@ -445,7 +445,7 @@ export default function JobApplicationForm() {
                   <button
                     type="submit"
                     disabled={isSubmitting || submitSuccess}
-                    className={`px-8 py-3 rounded-xl font-medium text-white transform transition-all duration-200 ${
+                    className={`px-8 py-3 rounded-md font-medium text-white transform transition-all duration-200 ${
                       isSubmitting || submitSuccess
                         ? "bg-gray-400 cursor-not-allowed"
                         : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:scale-105 hover:shadow-lg"
@@ -476,7 +476,7 @@ export default function JobApplicationForm() {
           </div>
         </div>
         
-        <div className="bg-white shadow-lg rounded-2xl p-8 transform transition-all duration-300 hover:shadow-xl">
+        <div className="bg-white shadow-lg  p-8 transform transition-all duration-300 hover:shadow-xl">
           <h3 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
             Need Assistance?
           </h3>
