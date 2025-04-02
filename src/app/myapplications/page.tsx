@@ -233,8 +233,8 @@ export default function JobApplicationsPage() {
         
         {selectedApplication && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white  max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl transform transition-all scale-95 to-scale-100 duration-300 animate-fadeIn">
-              <div className="bg-gradient-to-r from-teal-600 to-emerald-500 p-6 flex justify-between items-center rounded-t-2xl relative overflow-hidden">
+            <div className="bg-white  max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl transform transition-all scale-95 to-scale-100 duration-300 animate-fadeIn rounded-md">
+              <div className="bg-gradient-to-r from-teal-600 to-emerald-500 p-6 flex justify-between items-center rounded-t-md relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 transform translate-x-1/3 -translate-y-1/3">
                   <div className="w-full h-full bg-white/10 rounded-full blur-3xl"></div>
                 </div>
