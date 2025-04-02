@@ -20,21 +20,21 @@ export const JobCard = ({
   description,
   tags,
 }: JobCardProps) => {
-  const isImage = logo.includes("<img>") || logo.includes("http");
+  const isImage = logo.startsWith("http") || logo.includes("<img>");
 
   return (
-    <div className="flex flex-col gap-5 border border-solid border-[#D6DDEB] rounded-lg p-6 bg-white">
+    <div className="flex flex-col gap-5 border border-solid border-[#D6DDEB] rounded-lg p-6 bg-white transition-all duration-300 ease-in-out hover:shadow-lg hover:scale-105 cursor-pointer">
       <div className="flex justify-between items-center w-full">
         {isImage ? (
           <img
             src={logo.replace(/<img>|<\/img>/g, "").replace(/"/g, "")}
             alt={`${company} logo`}
-            className="w-12 h-12 rounded-4xl"
+            className="w-12 h-12 rounded-lg object-cover"
           />
         ) : (
           <div dangerouslySetInnerHTML={{ __html: logo }} className="w-12 h-12" />
         )}
-        <div className="text-[#4640DE] text-sm font-medium border border-[#4640DE] rounded px-3 py-1">
+        <div className="text-[#4640DE] text-sm font-medium border border-[#4640DE] rounded px-3 py-1 bg-[#F3F4FF]">
           Full Time
         </div>
       </div>

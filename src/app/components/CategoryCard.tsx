@@ -6,36 +6,27 @@ interface CategoryCardProps {
   icon: React.ReactNode;
   title: string;
   jobCount: number;
-  isHighlighted?: boolean;
 }
 
 export const CategoryCard: React.FC<CategoryCardProps> = ({
   icon,
   title,
   jobCount,
-  isHighlighted = false
 }) => {
-  const router = useRouter()
-  const baseStyles = "flex flex-col items-start gap-8 flex-1 p-8";
-  const cardStyles = isHighlighted
-    ? `${baseStyles} bg-[#4640DE]`
-    : `${baseStyles} border border-[#D6DDEB] bg-white`;
-
-  const titleStyles = isHighlighted
-    ? "text-white text-2xl font-semibold leading-[28.8px]"
-    : "text-[#25324B] text-2xl font-semibold leading-[28.8px]";
-
-  const countStyles = isHighlighted
-    ? "text-white text-lg font-normal leading-[28.8px]"
-    : "text-[#7C8493] text-lg font-normal leading-[28.8px]";
+  const router = useRouter();
 
   return (
-    <article className={cardStyles} onClick={()=>{router.push("/form/"+title)}}>
-      <div className="w-[48px] h-[48px]">{icon}</div>
+    <article
+      className="flex flex-col items-start gap-8 flex-1 p-8 border border-[#D6DDEB] bg-white transition-all duration-300 ease-in-out hover:bg-[#F8FAFF] hover:scale-105 cursor-pointer rounded-lg"
+      onClick={() => router.push(`/form/${title}`)}
+    >
+      <div className="w-12 h-12">{icon}</div>
       <div className="flex flex-col justify-center items-start gap-3">
-        <h3 className={titleStyles}>{title}</h3>
+        <h3 className="text-[#25324B] text-2xl font-semibold leading-[28.8px]">{title}</h3>
         <div className="flex items-center gap-4">
-          <p className={countStyles}>{jobCount} jobs available</p>
+          <p className="text-[#7C8493] text-lg font-normal leading-[28.8px]">
+            {jobCount} jobs available
+          </p>
           <div>
             <svg
               width="24"
@@ -46,14 +37,14 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
             >
               <path
                 d="M19.75 12.2256L4.75 12.2256"
-                stroke={isHighlighted ? "white" : "#25324B"}
+                stroke="#25324B"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M13.7002 6.20124L19.7502 12.2252L13.7002 18.2502"
-                stroke={isHighlighted ? "white" : "#25324B"}
+                stroke="#25324B"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

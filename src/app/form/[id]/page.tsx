@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export default function JobApplicationForm() {
   const params = useParams();
@@ -14,11 +14,13 @@ export default function JobApplicationForm() {
     phone: "",
     position: "",
     experience: "",
-    education: "",
+    skills: "",
+    currentRole: "",
+    availability: "",
     linkedin: "",
-    portfolio: "",
+    github: "",
     resume: null as File | null,
-    coverLetter: ""
+    motivation: ""
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,21 +66,23 @@ export default function JobApplicationForm() {
   };
   
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+      <header className="bg-white shadow-lg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-[#4640DE] rounded-md flex items-center justify-center">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center transform transition-transform hover:scale-105">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h1 className="text-xl font-semibold text-gray-800">Career Portal</h1>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                Career Portal
+              </h1>
             </div>
             <button 
               onClick={() => router.push("/")}
-              className="text-gray-600 hover:text-gray-800 font-medium"
+              className="px-4 py-2 rounded-lg text-indigo-600 hover:text-indigo-700 font-medium hover:bg-indigo-50 transition-colors duration-200"
             >
               Back to Jobs
             </button>
@@ -87,59 +91,79 @@ export default function JobApplicationForm() {
       </header>
       
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="bg-white shadow-lg rounded-xl overflow-hidden mb-8">
-          <div className="bg-gradient-to-r from-[#4640DE] to-[#5652E5] p-8">
-            <h1 className="text-white text-3xl font-bold">
-              Apply for: {jobTitle?.replace(/%20/g, " ")}
-            </h1>
-            <p className="text-white/90 text-lg mt-2">
-              Join our team and help us build something great
-            </p>
+        <div className="bg-white shadow-xl rounded-2xl overflow-hidden mb-8 transform transition-all duration-300 hover:shadow-2xl">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 transform translate-x-1/3 -translate-y-1/3">
+              <div className="w-full h-full bg-white/10 rounded-full blur-3xl"></div>
+            </div>
+            <div className="relative">
+              <h1 className="text-white text-4xl font-bold mb-4 leading-tight">
+                Apply for {jobTitle?.replace(/%20/g, " ")}
+              </h1>
+              <p className="text-white/90 text-xl font-light">
+              Advance your career and unlock new opportunities with us!
+              </p>
+            </div>
           </div>
           
-          <div className="p-6">
-            {/* Progress steps */}
-            <div className="mb-8">
-              <div className="flex justify-between items-center">
+          <div className="p-8">
+            <div className="mb-10">
+              <div className="flex justify-end items-center space-x-8">
                 {Array.from({length: totalSteps}).map((_, idx) => (
-                  <React.Fragment key={idx}>
+                  <div key={idx} className="flex items-center">
+                    {idx > 0 && (
+                      <div className={`w-12 h-0.5 mr-8 transition-all duration-300 ${
+                        currentStep > idx ? "bg-green-500" : "bg-gray-200"
+                      }`} />
+                    )}
                     <div className="flex flex-col items-center">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-medium ${
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center font-medium transition-all duration-300 ${
                         currentStep > idx + 1
-                          ? "bg-green-500 text-white"
+                          ? "bg-green-500 text-white shadow-lg shadow-green-200"
                           : currentStep === idx + 1
-                          ? "bg-[#4640DE] text-white"
-                          : "bg-gray-200 text-gray-500"
+                          ? "bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-200"
+                          : "bg-gray-100 text-gray-500"
                       }`}>
                         {currentStep > idx + 1 ? (
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
                         ) : (
-                          idx + 1
+                          <div className="flex items-center">
+                            {idx === 0 && (
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                              </svg>
+                            )}
+                            {idx === 1 && (
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                              </svg>
+                            )}
+                            {idx === 2 && (
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                            )}
+                          </div>
                         )}
                       </div>
-                      <span className="mt-2 text-sm font-medium text-gray-600">
-                        {idx === 0 ? "Personal Info" : idx === 1 ? "Experience" : "Documents"}
+                      <span className="mt-3 text-sm font-medium text-gray-600">
+                        {idx === 0 ? "Basic Info" : idx === 1 ? "Professional" : "Final Steps"}
                       </span>
                     </div>
-                    
-                    {idx < totalSteps - 1 && (
-                      <div className={`flex-1 h-1 mx-2 ${
-                        currentStep > idx + 1 ? "bg-green-500" : "bg-gray-200"
-                      }`} />
-                    )}
-                  </React.Fragment>
+                  </div>
                 ))}
               </div>
             </div>
-            
+
             <form onSubmit={handleSubmit}>
-              {/* Step 1: Personal Information */}
               {currentStep === 1 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-semibold text-gray-800">Personal Information</h2>
-                  <p className="text-gray-500">Please provide your contact details</p>
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    Basic Information
+                  </h2>
+                  <p className="text-gray-600">Let's start with your contact details</p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -153,7 +177,7 @@ export default function JobApplicationForm() {
                         required
                         value={formData.fullName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
                         placeholder="John Doe"
                       />
                     </div>
@@ -169,7 +193,7 @@ export default function JobApplicationForm() {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
                         placeholder="john.doe@example.com"
                       />
                     </div>
@@ -185,7 +209,7 @@ export default function JobApplicationForm() {
                         required
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
                         placeholder="+1 (555) 123-4567"
                       />
                     </div>
@@ -201,7 +225,7 @@ export default function JobApplicationForm() {
                         required
                         value={formData.position || jobTitle?.replace(/%20/g, " ")}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
                         placeholder="Software Engineer"
                       />
                     </div>
@@ -209,11 +233,12 @@ export default function JobApplicationForm() {
                 </div>
               )}
               
-              {/* Step 2: Experience */}
               {currentStep === 2 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-semibold text-gray-800">Professional Experience</h2>
-                  <p className="text-gray-500">Tell us about your qualifications</p>
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    Professional Details
+                  </h2>
+                  <p className="text-gray-600">Tell us about your professional background</p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -226,83 +251,117 @@ export default function JobApplicationForm() {
                         required
                         value={formData.experience}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
                       >
-                        <option value="">Select experience level</option>
-                        <option value="0-1">0-1 years</option>
+                        <option value="">Select experience</option>
+                        <option value="0-1">Less than 1 year</option>
                         <option value="1-3">1-3 years</option>
                         <option value="3-5">3-5 years</option>
                         <option value="5-10">5-10 years</option>
-                        <option value="10+">10+ years</option>
+                        <option value="10+">More than 10 years</option>
                       </select>
                     </div>
                     
                     <div className="space-y-2">
-                      <label htmlFor="education" className="block text-sm font-medium text-gray-700">
-                        Highest Education Level <span className="text-red-500">*</span>
+                      <label htmlFor="currentRole" className="block text-sm font-medium text-gray-700">
+                        Current Role <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="currentRole"
+                        name="currentRole"
+                        required
+                        value={formData.currentRole}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
+                        placeholder="Senior Developer"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="skills" className="block text-sm font-medium text-gray-700">
+                        Key Skills <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="skills"
+                        name="skills"
+                        required
+                        value={formData.skills}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
+                        placeholder="React, Node.js, TypeScript"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label htmlFor="availability" className="block text-sm font-medium text-gray-700">
+                        Availability to Start <span className="text-red-500">*</span>
                       </label>
                       <select
-                        id="education"
-                        name="education"
+                        id="availability"
+                        name="availability"
                         required
-                        value={formData.education}
+                        value={formData.availability}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
                       >
-                        <option value="">Select education</option>
-                        <option value="High School">High School</option>
-                        <option value="Associate's">Associate's Degree</option>
-                        <option value="Bachelor's">Bachelor's Degree</option>
-                        <option value="Master's">Master's Degree</option>
-                        <option value="PhD">PhD</option>
+                        <option value="">Select availability</option>
+                        <option value="immediate">Immediate</option>
+                        <option value="2-weeks">2 weeks notice</option>
+                        <option value="1-month">1 month notice</option>
+                        <option value="2-months">2+ months notice</option>
                       </select>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700">
-                        LinkedIn Profile
-                      </label>
-                      <input
-                        type="url"
-                        id="linkedin"
-                        name="linkedin"
-                        value={formData.linkedin}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
-                        placeholder="https://linkedin.com/in/username"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label htmlFor="portfolio" className="block text-sm font-medium text-gray-700">
-                        Portfolio Website
-                      </label>
-                      <input
-                        type="url"
-                        id="portfolio"
-                        name="portfolio"
-                        value={formData.portfolio}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
-                        placeholder="https://yourwebsite.com"
-                      />
                     </div>
                   </div>
                 </div>
               )}
               
-              {/* Step 3: Documents */}
               {currentStep === 3 && (
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-semibold text-gray-800">Documents</h2>
-                  <p className="text-gray-500">Upload your resume and cover letter</p>
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    Final Steps
+                  </h2>
+                  <p className="text-gray-600">Complete your application with additional information</p>
                   
                   <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700">
+                          LinkedIn Profile
+                        </label>
+                        <input
+                          type="url"
+                          id="linkedin"
+                          name="linkedin"
+                          value={formData.linkedin}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
+                          placeholder="https://linkedin.com/in/username"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <label htmlFor="github" className="block text-sm font-medium text-gray-700">
+                          GitHub Profile
+                        </label>
+                        <input
+                          type="url"
+                          id="github"
+                          name="github"
+                          value={formData.github}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
+                          placeholder="https://github.com/username"
+                        />
+                      </div>
+                    </div>
+                    
                     <div className="space-y-2">
                       <label htmlFor="resume" className="block text-sm font-medium text-gray-700">
                         Resume/CV <span className="text-red-500">*</span>
                       </label>
-                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                      <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 transition-all duration-200 hover:border-indigo-300">
                         <input
                           type="file"
                           id="resume"
@@ -316,14 +375,16 @@ export default function JobApplicationForm() {
                           htmlFor="resume" 
                           className="cursor-pointer flex flex-col items-center justify-center space-y-2"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                          </svg>
+                          <div className="p-3 rounded-full bg-indigo-50 text-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                            </svg>
+                          </div>
                           <div className="text-sm text-gray-600">
-                            <span className="font-medium text-[#4640DE]">Click to upload</span> or drag and drop
+                            <span className="font-medium text-indigo-600">Click to upload</span> or drag and drop
                           </div>
                           <p className="text-xs text-gray-500">
-                            PDF, DOC, DOCX up to 5MB
+                            PDF, DOC, DOCX up to 10MB
                           </p>
                         </label>
                         {formData.resume && (
@@ -338,59 +399,59 @@ export default function JobApplicationForm() {
                     </div>
                     
                     <div className="space-y-2">
-                      <label htmlFor="coverLetter" className="block text-sm font-medium text-gray-700">
-                        Cover Letter
+                      <label htmlFor="motivation" className="block text-sm font-medium text-gray-700">
+                        Why are you interested in this role? <span className="text-red-500">*</span>
                       </label>
                       <textarea
-                        id="coverLetter"
-                        name="coverLetter"
-                        rows={6}
-                        value={formData.coverLetter}
+                        id="motivation"
+                        name="motivation"
+                        rows={4}
+                        required
+                        value={formData.motivation}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4640DE] focus:border-transparent"
-                        placeholder="Tell us why you're a good fit for this position..."
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 hover:border-indigo-300 text-gray-900"
+                        placeholder="Share what excites you about this opportunity..."
                       ></textarea>
                     </div>
                   </div>
                 </div>
               )}
               
-              {/* Navigation buttons */}
               <div className="mt-10 flex justify-between">
                 <button
                   type="button"
                   onClick={prevStep}
-                  className={`px-6 py-3 rounded-lg font-medium ${
+                  className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
                     currentStep === 1
-                      ? "text-gray-400 bg-gray-100"
-                      : "text-gray-700 bg-gray-100 hover:bg-gray-200"
+                      ? "text-gray-400 bg-gray-100 cursor-not-allowed"
+                      : "text-gray-700 bg-gray-100 hover:bg-gray-200 hover:text-gray-900"
                   }`}
                   disabled={currentStep === 1}
                 >
-                  Previous
+                  Previous Step
                 </button>
                 
                 {currentStep < totalSteps ? (
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="px-6 py-3 rounded-lg font-medium text-white bg-[#4640DE] hover:bg-[#3530C3]"
+                    className="px-6 py-3 rounded-xl font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transform transition-all duration-200 hover:scale-105 hover:shadow-lg"
                   >
-                    Next Step
+                    Continue
                   </button>
                 ) : (
                   <button
                     type="submit"
                     disabled={isSubmitting || submitSuccess}
-                    className={`px-8 py-3 rounded-lg font-medium text-white ${
+                    className={`px-8 py-3 rounded-xl font-medium text-white transform transition-all duration-200 ${
                       isSubmitting || submitSuccess
-                        ? "bg-gray-400"
-                        : "bg-[#4640DE] hover:bg-[#3530C3]"
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:scale-105 hover:shadow-lg"
                     }`}
                   >
                     {isSubmitting ? (
                       <div className="flex items-center">
-                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
@@ -413,39 +474,47 @@ export default function JobApplicationForm() {
           </div>
         </div>
         
-        <div className="bg-white shadow-md rounded-xl p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">Need Help?</h3>
+        <div className="bg-white shadow-lg rounded-2xl p-8 transform transition-all duration-300 hover:shadow-xl">
+          <h3 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
+            Need Assistance?
+          </h3>
           <div className="flex items-start space-x-4">
-            <div className="bg-blue-50 p-2 rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#4640DE]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-gradient-to-br from-indigo-100 to-purple-100 p-3 rounded-xl">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
               </svg>
             </div>
             <div>
-              <p className="text-gray-600">
-                Having trouble with your application? Contact our support team at{" "}
-                <a href="mailto:careers@company.com" className="text-[#4640DE] font-medium">
-                  careers@company.com
+              <p className="text-gray-600 leading-relaxed">
+                Our talent acquisition team is here to help! Reach out to us at {" "}
+                <a href="mailto:talent@company.com" className="text-indigo-600 font-medium hover:text-indigo-700 transition-colors duration-200">
+                  arunjangir9987@gmail.com
                 </a>{" "}
-                or call us at +1 (555) 123-4567.
+                or call{" "}
+                <span className="text-indigo-600 font-medium">
+                  +91-742894XXXX
+                </span>
               </p>
             </div>
           </div>
         </div>
       </main>
       
-      <footer className="bg-gray-50 border-t border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <footer className="bg-white border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Company Name. All rights reserved.
+              © {new Date().getFullYear()} Arun All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-500 hover:text-gray-700">
+              <a href="#" className="text-gray-500 hover:text-indigo-600 transition-colors duration-200">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-500 hover:text-gray-700">
+              <a href="#" className="text-gray-500 hover:text-indigo-600 transition-colors duration-200">
                 Terms of Service
+              </a>
+              <a href="#" className="text-gray-500 hover:text-indigo-600 transition-colors duration-200">
+                Cookie Policy
               </a>
             </div>
           </div>

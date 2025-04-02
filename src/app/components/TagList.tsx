@@ -1,4 +1,4 @@
-import { cn } from "./lib/util";
+import { cn } from "./lib/util"; // Make sure this utility exists!
 
 export interface Tag {
   label: string;
@@ -27,18 +27,12 @@ export const TagList = ({ tags, className }: TagListProps) => {
   return (
     <div className={cn("flex flex-wrap items-center gap-2", className)}>
       {tags.map((tag, index) => (
-        <>
-          <div
-            key={`${tag.label}-${index}`}
-            className={cn(
-              "text-sm font-semibold px-2.5 py-1.5 rounded-[80px]",
-              getTagStyles(tag.type),
-            )}
-          >
+        <div key={`${tag.label}-${index}`} className="flex items-center gap-2">
+          <div className={cn("text-sm font-semibold px-2.5 py-1.5 rounded-[80px]", getTagStyles(tag.type))}>
             {tag.label}
           </div>
           {index < tags.length - 1 && <div className="w-px h-6 bg-[#D6DDEB]" />}
-        </>
+        </div>
       ))}
     </div>
   );

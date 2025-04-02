@@ -10,7 +10,6 @@ export const CategoryGrid: React.FC = () => {
       icon: <CategoryIcons.Marketing />,
       title: "Marketing",
       count: 140,
-      highlighted: true,
     },
     { icon: <CategoryIcons.Finance />, title: "Finance", count: 325 },
     { icon: <CategoryIcons.Technology />, title: "Technology", count: 436 },
@@ -32,7 +31,6 @@ export const CategoryGrid: React.FC = () => {
             icon={category.icon}
             title={category.title}
             jobCount={category.count}
-            isHighlighted={category.highlighted}
           />
         ))}
       </div>
@@ -43,7 +41,7 @@ export const CategoryGrid: React.FC = () => {
             icon={category.icon}
             title={category.title}
             jobCount={category.count}
-            isHighlighted={category.highlighted}
+
           />
         ))}
       </div>

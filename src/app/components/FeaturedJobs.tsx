@@ -89,33 +89,22 @@ export const FeaturedJobs = () => {
           <span className="text-[#25324B]">Featured</span>
           <span className="text-[#26A4FF]">jobs</span>
         </h2>
-        <button className="flex items-center gap-4 cursor-pointer">
-          <span className="text-[#4640DE] text-base font-bold">
-            Show all jobs
-          </span>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        <a
+            href="#"
+            className="flex items-center gap-4 text-[#4640DE] hover:text-[#3630BE] hover:underline transition-all duration-300 ease-in-out"
           >
-            <path
-              d="M19.75 11.7256L4.75 11.7256"
-              stroke="#4640DE"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+            <span className="font-semibold text-base">Show all jobs</span>
+            <div
+              className="transition-transform duration-300 ease-in-out hover:translate-x-1"
+              dangerouslySetInnerHTML={{
+                __html: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.75 11.7256L4.75 11.7256" stroke="#4640DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> 
+        <path d="M13.7002 5.70124L19.7502 11.7252L13.7002 17.7502" stroke="#4640DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> 
+      </svg>`,
+              }}
             />
-            <path
-              d="M13.7002 5.70124L19.7502 11.7252L13.7002 17.7502"
-              stroke="#4640DE"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+          </a>
+
       </div>
       <div className="grid grid-cols-[repeat(4,1fr)] gap-8 w-full max-md:grid-cols-[repeat(2,1fr)] max-sm:grid-cols-[1fr]">
         {jobsData.map((job, index) => (

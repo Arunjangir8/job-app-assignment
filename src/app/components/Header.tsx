@@ -55,26 +55,32 @@ export const Header = () => {
         <nav className="flex justify-center items-center gap-4 max-md:hidden">
           <a
             href="#"
-            className="text-[#515B6F] text-base font-medium leading-[25.6px]"
+            className="text-[#515B6F] text-base  leading-[25.6px] transition-colors duration-300 hover:text-[#4640DE] font-bold"
           >
             Find Jobs
           </a>
+
           <a
             href="#"
-            className="text-[#515B6F] text-base font-medium leading-[25.6px]"
+            className="text-[#515B6F] text-base  leading-[25.6px] transition-colors duration-300 hover:text-[#4640DE] font-bold"
           >
             Browse Companies
           </a>
+
         </nav>
       </div>
       <div className="flex items-center gap-4 max-sm:hidden">
-        <button className="text-[#4640DE] text-base font-bold px-6 py-3">
+        <button className="w-40 text-[#4640DE] text-base font-bold px-6 py-3 transition duration-300 ease-in-out transform hover:scale-110 hover:text-white hover:bg-[#4640DE] border-2 border-[#4640DE]">
           Login
         </button>
+
         <div className="w-px h-12 bg-[#D6DDEB]" />
-        <button className="bg-[#4640DE] text-white text-base font-bold px-6 py-3">
+
+        <button className="w-40 bg-[#4640DE] text-white text-base font-bold px-6 py-3 transition duration-300 ease-in-out transform hover:scale-110 hover:bg-[#2F28A8]">
           Sign Up
         </button>
+
+
       </div>
       <button className="hidden max-sm:block">
         <Menu className="h-6 w-6 text-[#25324B]" />

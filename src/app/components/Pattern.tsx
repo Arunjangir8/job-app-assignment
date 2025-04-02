@@ -6,7 +6,7 @@ export const Pattern = () => {
         viewBox="0 0 997 794"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-[860px] h-[794px] absolute right-0 top-0 max-lg:w-[600px] max-sm:hidden"
+        className="w-[860px] h-[794px] absolute right-0 top-0 max-lg:w-[600px] max-sm:hidden z-0"
       >
         <path
           opacity="0.6"

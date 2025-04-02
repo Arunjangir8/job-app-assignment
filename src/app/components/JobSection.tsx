@@ -118,7 +118,7 @@ export const JobsSection = () => {
     <section className="w-full bg-[#F8F8FD] relative overflow-hidden px-[124px] py-20 max-md:px-[60px] max-sm:px-5">
       <div className="absolute w-[860px] h-[794px] z-[1] pointer-events-none right-0 top-0">
         <div
-        
+
           dangerouslySetInnerHTML={{
             __html: `<svg id="I0:2037;292:8665" layer-name="Pattern" width="797" height="877" viewBox="0 0 797 877" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full"> <path opacity="0.6" d="M328.972 -72.173L615.806 -212.02L617.987 -3.74798L329.227 135.94L328.972 -72.173Z" fill="#F8F8FD" stroke="#CCCCF5" stroke-width="4"></path> <path d="M261.005 590.224L816.767 306.268L816.767 646.273L261.229 928.43L261.005 590.224Z" fill="#F8F8FD" stroke="#CCCCF5" stroke-width="4"></path> <path d="M2.00481 957.244L517.767 703.214L517.767 1013.25L2.22902 1265.48L2.00481 957.244Z" fill="#F8F8FD" stroke="#CCCCF5" stroke-width="4"></path> </svg>`,
           }}
@@ -132,26 +132,31 @@ export const JobsSection = () => {
           </h2>
           <a
             href="#"
-            className="flex items-center gap-4 text-[#4640DE] hover:opacity-90 transition-opacity"
+            className="flex items-center gap-4 text-[#4640DE] hover:text-[#3630BE] hover:underline transition-all duration-300 ease-in-out"
           >
             <span className="font-semibold text-base">Show all jobs</span>
             <div
+              className="transition-transform duration-300 ease-in-out hover:translate-x-1"
               dangerouslySetInnerHTML={{
-                __html: `<svg id="I0:2037;668:14675" layer-name="Icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[24px] h-[24px]"> <path d="M19.75 11.7256L4.75 11.7256" stroke="#4640DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M13.7002 5.70124L19.7502 11.7252L13.7002 17.7502" stroke="#4640DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg>`,
+                __html: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.75 11.7256L4.75 11.7256" stroke="#4640DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> 
+        <path d="M13.7002 5.70124L19.7502 11.7252L13.7002 17.7502" stroke="#4640DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> 
+      </svg>`,
               }}
             />
           </a>
+
         </header>
         <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1">
           <div className="flex flex-col gap-4">
             {JOBS_DATA.slice(0, 4).map((job, index) => (
-                //@ts-ignore
+              //@ts-ignore
               <JobCard key={`col1-${index}`} {...job} />
             ))}
           </div>
           <div className="flex flex-col gap-4">
             {JOBS_DATA.slice(4).map((job, index) => (
-                //@ts-ignore
+              //@ts-ignore
               <JobCard key={`col2-${index}`} {...job} />
             ))}
           </div>

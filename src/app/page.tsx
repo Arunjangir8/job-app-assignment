@@ -20,7 +20,7 @@ const Index = () => {
             <Hero />
             <JobSearch />
           </div>
-          <div className="lg:bg-[url('https://s3-alpha-sig.figma.com/img/849d/9766/51c585cf41e864d6b53eba0a93aec63f?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=pSEIAIbkJrUcAdNgzwz024DJ9~CAkmgPvM08IqxJ~VHzJas9853EjKTZJ1VgRmLWrNyRNcqyxRBH5zYJzJz1LN9cs1yjW9km6Vomsr774~pIFwuBhFCB8b9jd8G-ugF4dcFJ9dNP37M6heJgl8ZQueToMNRKpP4NiW-PQV0BawfpZQ-mJszcEbF8b5IKTWadgHmIjAkIIpcyGAsnrh77g6Iv200HFXmJgl6xOjv6AKxtM~s-3rqV5qoNb2fRSdMxoL~QhzH0uliTR813m-9yy8X-kjkbRfkbFY4StCx~da4Rp1KgeK0qbFebMNiP306MyGTayP~7htnVY0GHtYzwQw__')] bg-cover bg-center h-[700px] w-[600px]">
+          <div className="lg:bg-[url('https://s3-alpha-sig.figma.com/img/849d/9766/51c585cf41e864d6b53eba0a93aec63f?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=pSEIAIbkJrUcAdNgzwz024DJ9~CAkmgPvM08IqxJ~VHzJas9853EjKTZJ1VgRmLWrNyRNcqyxRBH5zYJzJz1LN9cs1yjW9km6Vomsr774~pIFwuBhFCB8b9jd8G-ugF4dcFJ9dNP37M6heJgl8ZQueToMNRKpP4NiW-PQV0BawfpZQ-mJszcEbF8b5IKTWadgHmIjAkIIpcyGAsnrh77g6Iv200HFXmJgl6xOjv6AKxtM~s-3rqV5qoNb2fRSdMxoL~QhzH0uliTR813m-9yy8X-kjkbRfkbFY4StCx~da4Rp1KgeK0qbFebMNiP306MyGTayP~7htnVY0GHtYzwQw__')] bg-cover bg-center h-[700px] w-[600px] z-10">
         </div>
           </div>
         </main>
